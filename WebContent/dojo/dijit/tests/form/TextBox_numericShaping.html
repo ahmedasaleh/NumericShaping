@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+	<title>TextBox type Tests</title>
+	<style type="text/css">
+		@import "../../themes/claro/document.css";
+		@import "../css/dijitTests.css";
+	</style>
+
+	<!-- required: the default dijit theme: -->
+	<link id="themeStyles" rel="stylesheet" href="../../../dijit/themes/claro/claro.css"/>
+
+	<!-- required: dojo.js -->
+	<script type="text/javascript" src="../../../dojo/dojo.js"
+		data-dojo-config="parseOnLoad: true, isDebug: true"></script>
+
+	<!-- only needed for alternate theme testing:
+	<script type="text/javascript" src="../_testCommon.js"></script> -->
+
+	<script type="text/javascript">
+				dojo.require("doh.runner");
+				dojo.require("dojo.dom");
+				dojo.require("dojo._base.array");
+				dojo.require("dojo._base.lang");
+				dojo.require("dojo.parser");
+				dojo.require("dijit.dijit");
+				dojo.require("dojo.dom-attr");
+				dojo.require("dijit.form.Select");
+				dojo.require("dijit.form.NumericShaperSelect");
+				dojo.require("dijit.form.TextBox");
+				//dojo.require("dijit.form.CurrencyTextBox");
+				//dojo.require("dijit.form.DateTextBox");
+				//dojo.require("dijit.form.TimeTextBox");
+				//dojo.require("dijit.form.NumberTextBox");
+				//dojo.require("dijit.form.RangeBoundTextBox");
+				dojo.require("dojo.domReady!");
+
+		dojo.require("doh.runner");
+		dojo.require("dijit.dijit"); // optimize: load dijit layer
+		dojo.require("dijit.form.ToggleButton");
+		dojo.require("dojox.mobile.ToggleButton");
+
+		dojo.ready(function(){
+
+			doh.register("attributes", [
+				{
+					name: "dijit",
+					runTest: function(){
+						//var dijit_attributes = dijit.byId('dijit_attributes');
+						doh.t("dijit original get('checked')", "dijit original get('checked')");
+						//doh.t(dojo.hasClass(dijit_attributes.domNode, dijit_attributes.baseClass+"Checked"), "dijit baseClass checked");
+						//dijit_attributes.set('checked', false);
+						//doh.f(dijit_attributes.get('checked'), "dijit get('checked')");
+						//doh.f(dojo.hasClass(dijit_attributes.domNode, dijit_attributes.baseClass+"Checked"), "dijit baseClass not checked");
+						//doh.t(dojo.hasClass(dijit_attributes.domNode, dijit_attributes.baseClass), "dijit baseClass");
+						//doh.t(dojo.hasClass(dijit_attributes.domNode, "mblRedButton"), "dijit original class");
+					}
+	 			},
+				{
+					name: "mobile",
+					runTest: function(){
+						//var mobile_attributes = dijit.byId('mobile_attributes');
+						doh.t("mobile original get('checked')", "mobile original get('checked')");
+						//doh.t(dojo.hasClass(mobile_attributes.domNode, mobile_attributes.baseClass+"Checked"), "mobile baseClass checked");
+						//mobile_attributes.set('checked', false);
+						//doh.f(mobile_attributes.get('checked'), "mobile get('checked')");
+						//doh.f(dojo.hasClass(mobile_attributes.domNode, mobile_attributes.baseClass+"Checked"), "mobile baseClass not checked");
+						//doh.t(dojo.hasClass(mobile_attributes.domNode, mobile_attributes.baseClass), "mobile baseClass");
+						//doh.t(dojo.hasClass(mobile_attributes.domNode, "mblRedButton"), "mobile original class");
+					}
+	 			}
+			]);
+			doh.run();
+			});
+
+</script>
+</head>
+<body class="claro" role="main">
+	<!--h1>TextBox type Tests</h1>
+	<input id="hn" aria-label="hn" type="number" value="1234" /><br>
+	<input id="hd" aria-label="hd" type="date" value="2011-05-19" /><br>
+	<input id="ht" aria-label="ht" type="time" value="10:11:00" /><br>
+	<input id="hp" aria-label="hp" type="password" value="password" /><br>
+<br>
+	<input aria-label="dr" id="dr" type="number" dojoType="dijit.form.RangeBoundTextBox" value="1234" /><br>
+	<input aria-label="dp" id="dp" type="password" dojoType="dijit.form.TextBox" value="password" /><br>
+	<input aria-label="dn" id="dn" type="number" dojoType="dijit.form.NumberTextBox" value="1234" /><br>
+	<input aria-label="dc" id="dc" type="number" dojoType="dijit.form.CurrencyTextBox" value="1234.00" /><br>
+	<input aria-label="dd" id="dd" type="date" dojoType="dijit.form.DateTextBox" value="2011-05-19" /><br>
+	<input aria-label="dt" id="dt" type="time" dojoType="dijit.form.TimeTextBox" value="T10:11:00" /><br>
+<br>
+	<input id="wr" data-dojo-type="dijit/form/RangeBoundTextBox" data-dojo-props='value:1234, type:"number", "aria-label":"wr" ' /><br>
+	<input id="wp" data-dojo-type="dijit/form/TextBox" data-dojo-props='value:"password", type:"password", "aria-label":"wp" ' /><br>
+	<input id="wn" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props='value:1234, type:"number", "aria-label":"wn" ' /><br>
+	<input id="wc" data-dojo-type="dijit/form/CurrencyTextBox" data-dojo-props='value:1234, type:"number", "aria-label":"wc" ' /><br>
+	<input id="wd" data-dojo-type="dijit/form/DateTextBox" data-dojo-props='value:new Date(2011,04,19,0,0,0,0), type:"date", "aria-label":"wd" ' /><br>
+	<input id="wt" data-dojo-type="dijit/form/TimeTextBox" data-dojo-props='value:new Date(0,0,0,10,11,0,0), type:"time", "aria-label":"wt" ' /><br>
+<br-->
+	<br/>
+	<select id="s3" data-dojo-id="s3" data-dojo-type="dijit/form/NumericShaperSelect" data-dojo-props='name:"s3"'></select><br>
+	<br/>
+	<input aria-label="dr" id="dr" data-dojo-id="dr" type="number" data-dojo-type="dijit/form/RangeBoundTextBox" value="1234" data-dojo-props='name:"dr", textDir:"ltr"' /><br>
+	<input aria-label="dr2" id="dr2" data-dojo-id="dr2" style="text-align:right;" type="number" dojoType="dijit/form/TextBox" value="1234Nom" data-dojo-props='name:"dr2"' /><br>
+
+</body>
+</html>
