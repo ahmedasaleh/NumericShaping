@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NumericShapingBuild" basedir=".">
+	<property name="shaper_src.dir"     value="../WebContent/dojo"/>
+	<property name="shaper_dijit_src.dir"     value="${shaper_src.dir}/dijit"/>
+	<property name="shaper_dojo_src.dir"     value="${shaper_src.dir}/dojo"/>
+	<property name="dojo_base.dir"     value="../../.."/>
+	<property name="dojo_dijit.dir"     value="${dojo_base.dir}/dijit"/>
+	<property name="dojo_dojo.dir"     value="${dojo_base.dir}/dojo"/>
+
+
+	<target name="copyToDojo">
+		<copy todir="${dojo_dojo.dir}">
+			<fileset dir="${shaper_dojo_src.dir}">
+				<include name="**/*.js" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="copyToDijit">
+		<copy todir="${dojo_dijit.dir}">
+			<fileset dir="${shaper_dijit_src.dir}">
+				<include name="**/*.js" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile">
+		<javac srcdir="src" destdir="build/classes"/>
+	</target>
+</project>
