@@ -1,4 +1,4 @@
-define([], function() {
+define(["dojo/data/util/NumericShaperUtility"], function(NumericShaper){
 
 	// module:
 	// dijit/_BidiMixin
@@ -43,13 +43,15 @@ define([], function() {
 		textDir : "",
 
 		// Bidi Support
-		shaper : "Nominal",
+		numericShaperType: "National", // just for testing -should be dynamically changed.
 
-		getShaper : function(/* String */text) {
+		// there is no need for the following functions for now.
+		/*
+		getShaper : function(text) {
 			return this.shaper;
 		},
 
-		_setShaper : function(/* String */shaper) {
+		_setShaper : function(shaper) {
 			// summary:
 			// Setter for textDir.
 			// description:
@@ -60,6 +62,7 @@ define([], function() {
 				this._set("shaper", shaper);
 			}
 		},
+		*/
 
 		getTextDir : function(/* String */text) {
 			// summary:
@@ -123,8 +126,42 @@ define([], function() {
 					element.dir = textDir;
 				}
 			}
+			// this line will affect all of the TextBox family (CurrencyTextBox, TextBox, DateTextBox, TimeTextBox, NumberTextBox, RangeBoundTextBox, TextArea,...etc
+			if(element.value){
+				element.value = this.applyNumericShaping(element.value);	
+			}
 		},
+		
+		/**
+		 * it will be invoked before rendering occurs, and before any dom nodes are created. 
+		 * If you need to add or change the instance’s properties before the widget is rendered - this is the place to do it.
+		 * 
+		 */
+		postMixInProperties : function(){
+			this.inherited(arguments);
+			if (this.label)
+				this.label = this.applyNumericShaping(this.label);
+			/*
+			if (this.displayedValue)
+				this.displayedValue = this.applyNumericShaping(this.displayedValue);
+			
+			if (this.optionsTitle)
+				this.optionsTitle = this.applyNumericShaping(this.optionsTitle);
 
+			if (this.content)
+				this.content = this.applyNumericShaping(this.content);
+
+			if (this.title)
+				this.title = this.applyNumericShaping(this.title);
+
+			if (this.tooltip)
+				this.tooltip = this.applyNumericShaping(this.tooltip);
+
+			if(this.options){
+				for(var i = 0; i < this.options.length; i++)
+					this.options[i].label =  this.applyNumericShaping(this.options[i].label);
+			}*/
+		},
 		enforceTextDirWithUcc : function(option, text) {
 			// summary:
 			// Wraps by UCC (Unicode control characters) option's text
@@ -195,6 +232,28 @@ define([], function() {
 					this.applyTextDir(node);
 				}
 			}
+		},
+		
+		applyNumericShaping : function( /*String?*/ text) {
+			// summary:
+			//		Apply the shaping behavior
+
+			var ob = new NumericShaper();
+			var shapedString = "";
+			
+			if (this.numericShaperType === "National") {
+				ob.getShaper(ob.ARABIC); // National
+			} else if (this.numericShaperType === "Contextual") {
+				ob.getContextualShaper(ob.ARABIC, ob.EUROPEAN); // Contextual Arabic
+			} else {
+				ob.getShaper(ob.EUROPEAN); // Nominal
+			}
+
+			if (text) {
+				shapedString = ob.shapeWith(this.numericShaperType, text).join("");
+			}
+			
+			return shapedString;
 		}
 	};
 });
